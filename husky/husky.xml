@@ -1,0 +1,119 @@
+<mujoco model="husky">
+    <compiler angle="radian" meshdir="assets"/>
+
+  <option integrator="implicitfast"/>
+
+    <default>
+        <default class="husky">
+            <material specular="0.5" shininess="0.25"/>
+            <joint armature="0.1" damping="1"/>
+            <position inheritrange="1"/>
+            <default class="visual">
+                <geom type="mesh" group="2" contype="0" conaffinity="0"/>
+            </default>
+            <default class="collision">
+                <geom type="mesh" group="3" mass="0" density="0"/>
+            </default>
+            <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4"/>
+        </default>
+    </default>
+    
+    <asset>
+        <material class="husky" name="husky_orange" rgba="0.996 0.941 0.412 1.0"/>
+        <material class="husky" name="husky_black" rgba="0.231 0.231 0.231 1.0"/>
+
+        <mesh name="base_link"     file="base_link.stl"/>
+        <mesh name="wheel"         file="wheel.stl"/>
+        <mesh name="bumper"        file="bumper.stl"/>
+        <mesh name="top_chassis"   file="top_chassis.stl"/>
+        <mesh name="top_structure" file="roas_dyros.STL"/>
+        <mesh name="top_plate"     file="top_plate.stl"/>
+        <mesh name="user_rail"     file="user_rail.stl"/>
+    </asset>
+
+    <worldbody>
+        <body name="base_footprint" pos="0 0 0.1">
+            <joint type="free" stiffness="0" damping="0" frictionloss="0" armature="0" />
+
+            <body name="base" pos="0 0 0">
+                <inertial pos="-0.00065 -0.085 0.062"  mass="46.034" fullinertia="0.6022 1.7386 2.0296 -0.02364 -0.1197 -0.001544"/>
+                <geom class="collision" size="0.4937 0.28545 0.061875" pos="0 0 0.061875" type="box"/>
+                <geom class="collision" size="0.39496 0.28545 0.051875" pos="0 0 0.175625" type="box"/>
+                <geom class="visual" pos="0.272 0 0.245" type="mesh" mesh="user_rail" material="husky_black"/>
+                <geom class="visual" pos="0.0812 0 0.245" type="mesh" mesh="top_plate" material="husky_black"/>
+                <geom class="visual" pos="-0.48 0 0.091" quat="0 0 1 0" type="mesh" mesh="bumper" rgba="0.2 0.2 0.2 1.0"/>
+                <geom class="visual" pos="0.48 0 0.091" type="mesh" mesh="bumper" rgba="0.2 0.2 0.2 1.0"/>
+                <geom class="visual" pos="0 0 0" type="mesh" mesh="base_link" rgba="0.8 0.8 0.0 1.0"/>
+                <geom class="visual" pos="0 0 0" type="mesh" mesh="top_chassis" rgba="0.8 0.8 0.0 1.0"/>
+                <site name="husky_site"  size = "0.005" rgba = ".1 .1 .9 1" type = "sphere" />
+
+                <body name="top_structure_link" pos="0 0 0">
+                    <inertial pos="-0.2 0 0.85" mass="40" 
+                        fullinertia="1.95397859e-01 1.92679403e-01 1.01958752e-01 7.23330468e-08 2.01114568e-02 -7.81325404e-05"/>
+                    <geom class="visual" pos="0 0 0" type="mesh" mesh="top_structure" material="husky_black"/>
+                    <geom class="collision" size="0.19496 0.28 0.6825" pos="-0.2 0 0.8" type="box"/>
+                </body>
+
+                <body name="front_left_wheel" pos="0.256 0.2854 0.03282">
+                    <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467"/>
+                    <joint name="front_left_wheel" type="hinge" pos="0 0 0" axis="0 1 0"/>
+                    <geom class="visual" pos="0 0 0" quat="0 0 0 1" mesh="wheel" material="husky_black"/>
+                    <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/>
+                </body>
+
+                <body name="front_right_wheel" pos="0.256 -0.2854 0.03282">
+                    <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467"/>
+                    <joint name="front_right_wheel" type="hinge" pos="0 0 0" axis="0 1 0"/>
+                    <geom class="visual" pos="0 0 0" quat="0 0 0 1" mesh="wheel" material="husky_black"/>
+                    <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/>
+                </body>
+
+                <body name="rear_left_wheel" pos="-0.256 0.2854 0.03282">
+                    <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467"/>
+                    <joint name="rear_left_wheel" type="hinge" pos="0 0 0" axis="0 1 0"/>
+                    <geom class="visual" pos="0 0 0" quat="0 0 0 1" mesh="wheel" material="husky_black"/>
+                    <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/>
+                </body>
+
+                <body name="rear_right_wheel" pos="-0.256 -0.2854 0.03282">
+                    <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467"/>
+                    <joint name="rear_right_wheel" type="hinge" pos="0 0 0" axis="0 1 0" />
+                    <geom class="visual" pos="0 0 0" quat="0 0 0 1" mesh="wheel" material="husky_black"/>
+                    <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/>
+                </body>
+            </body>       
+        </body>
+    </worldbody>
+
+    <actuator>
+        <velocity name="left_wheel"  joint="front_left_wheel"  kv="140" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>
+        <velocity name="right_wheel" joint="front_right_wheel" kv="140" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/> 
+        <!-- <velocity name="rear_left_wheel"   joint="rear_left_wheel"   kv="140" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>  -->
+        <!-- <velocity name="rear_right_wheel"  joint="rear_right_wheel"  kv="140" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>  -->
+
+        <!-- <motor name="front_left_wheel"  joint="front_left_wheel"  ctrlrange="-50 50"/>
+        <motor name="front_right_wheel" joint="front_right_wheel" ctrlrange="-50 50"/> 
+        <motor name="rear_left_wheel"   joint="rear_left_wheel"   ctrlrange="-50 50"/> 
+        <motor name="rear_right_wheel"  joint="rear_right_wheel"  ctrlrange="-50 50"/>  -->
+    </actuator>
+
+    <sensor> 
+        <framepos name="position_sensor" objtype="site" objname="husky_site"/> 
+        <framequat name="orientation_sensor" objtype="site" objname="husky_site"/> 
+        <framelinvel name="linear_velocity_sensor" objtype="site" objname="husky_site"/> 
+        <frameangvel name="angular_velocity_sensor" objtype="site" objname="husky_site"/> 
+    </sensor>
+
+    <equality>
+        <joint name="left_wheels_gear"
+            joint1="front_left_wheel"
+            joint2="rear_left_wheel"
+            polycoef="0 1 0 0 0"/>
+
+        <joint name="right_wheels_gear"
+            joint1="front_right_wheel"
+            joint2="rear_right_wheel"
+            polycoef="0 1 0 0 0"/>
+    </equality>
+
+</mujoco>

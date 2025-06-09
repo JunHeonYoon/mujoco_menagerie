@@ -67,7 +67,7 @@
 
   <worldbody>
     <body name="base" childclass="fr3">
-      <body name="fr3_link0">
+      <body name="fr3_link0" >
         <geom mesh="link0_0" material="black" class="visual"/>
         <geom mesh="link0_1" material="white" class="visual"/>
         <geom mesh="link0_2" material="white" class="visual"/>

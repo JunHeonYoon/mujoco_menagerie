@@ -1,0 +1,135 @@
+<mujoco model="dyros_pcv">
+    <compiler angle="radian" meshdir="assets"/>
+
+    <option integrator="implicitfast"/>
+
+    <default>
+        <default class="dyros_pcv">
+            <material specular="0.5" shininess="0.25"/>
+            <joint armature="0.1" damping="1"/>
+            <position inheritrange="1"/>
+            <default class="dyros_pcv_visual">
+                <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+            </default>
+
+            <default class="dyros_pcv_collision">
+                <geom type="mesh" group="3"/>
+            </default>
+
+            <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4"/>
+        </default>
+    </default>
+    
+    <asset>
+        <material class="dyros_pcv" name="silver" rgba="0.8 0.8 0.8 1"/>
+        <material class="dyros_pcv" name="black" rgba="0.1 0.1 0.1 1"/>
+        
+        <!-- Visual meshes -->
+        <mesh name="body_bottom"  file="body_bottom.stl"/>
+        <mesh name="body_side"    file="body_side.stl"/>
+        <mesh name="body_top"     file="body_top.stl"/>
+        <mesh name="wheel_body"   file="wheel_body.stl"/>
+        <mesh name="wheel_rotate" file="wheel_rotate.stl"/>
+        
+    </asset>
+
+    <worldbody>
+        <body name="base_footprint" pos="0 0 0.1" childclass="dyros_pcv">
+            <joint type="free" stiffness="0" damping="0" frictionloss="0" armature="0" />
+
+            <!-- Base link -->
+            <body name="base_link" pos="0 0 0">
+                <geom class="dyros_pcv_visual" type="mesh" mesh="body_bottom" material="black" />
+                <geom class="dyros_pcv_visual" type="mesh" mesh="body_side" material="black" />
+                <geom class="dyros_pcv_visual" type="mesh" mesh="body_top" material="black" />
+                <geom class="dyros_pcv_collision" type="box" pos="0 0 0.12" size="0.320 0.23 0.13" group="3"/>
+                <site name="dyros_pcv_site"  size = "0.005" rgba = ".1 .1 .9 1" type = "sphere" />
+                <inertial pos="0 0 0" mass="10.95" diaginertia="0.2491 0.4255 0.5545"/>
+                
+                <!-- Front left steer link and joint -->
+                <body name="front_left_steer" pos="0.215 0.125 0">
+                    <geom type="mesh" class="dyros_pcv_visual" mesh="wheel_body" material="silver" />
+                    <geom type="cylinder" class="dyros_pcv_collision" size="0.05 0.03" group="3" />
+                    <joint name="front_left_steer" type="hinge" axis="0 0 1" range="-1000000 1000000" />
+                    <inertial pos="0 0 0" mass="2.0" diaginertia="0.002 0.002 0.002"/>
+                    
+                    <!-- Front left rotate link and joint -->
+                    <body name="front_left_rotate" pos="-0.02 0 -0.052" >
+                        <geom class="dyros_pcv_visual" type="mesh" mesh="wheel_rotate" material="black" />
+                        <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <joint name="front_left_rotate" type="hinge" axis="0 1 0" range="-1000000 1000000" />
+                        <inertial pos="0 0 0" mass="0.72" diaginertia="0.0005685 0.001089 0.0005685"/>
+                    </body>
+                </body>
+                
+                <!-- Rear left steer link and joint -->
+                <body name="rear_left_steer" pos="-0.215 0.125 0">
+                    <geom class="dyros_pcv_visual" type="mesh" mesh="wheel_body" material="silver" />
+                    <geom class="dyros_pcv_collision" type="cylinder" size="0.05 0.03" group="3" />
+                    <joint name="rear_left_steer" type="hinge" axis="0 0 1" range="-1000000 1000000" />
+                    <inertial pos="0 0 0" mass="2.0" diaginertia="0.002 0.002 0.002"/>
+                    
+                    <!-- Rear left rotate link and joint -->
+                    <body name="rear_left_rotate" pos="-0.02 0 -0.052">
+                        <geom class="dyros_pcv_visual" type="mesh" mesh="wheel_rotate" material="black" />
+                        <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <joint name="rear_left_rotate" type="hinge" axis="0 1 0" range="-1000000 1000000" />
+                        <inertial pos="0 0 0" mass="0.72" diaginertia="0.0005685 0.001089 0.0005685"/>
+                    </body>
+                </body>
+                
+                <!-- Rear right steer link and joint -->
+                <body name="rear_right_steer" pos="-0.215 -0.125 0">
+                    <geom class="dyros_pcv_visual" type="mesh" mesh="wheel_body" material="silver" />
+                    <geom class="dyros_pcv_collision" type="cylinder" size="0.05 0.03" group="3" />
+                    <joint name="rear_right_steer" type="hinge" axis="0 0 1" range="-1000000 1000000" />
+                    <inertial pos="0 0 0" mass="2.0" diaginertia="0.002 0.002 0.002"/>
+                    
+                    <!-- Rear right rotate link and joint -->
+                    <body name="rear_right_rotate" pos="-0.02 0 -0.052">
+                        <geom class="dyros_pcv_visual" type="mesh" mesh="wheel_rotate" material="black" />
+                        <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <joint name="rear_right_rotate" type="hinge" axis="0 1 0" range="-1000000 1000000" />
+                        <inertial pos="0 0 0" mass="0.72" diaginertia="0.0005685 0.001089 0.0005685"/>
+                    </body>
+                </body>
+                
+                <!-- Front right steer link and joint -->
+                <body name="front_right_steer" pos="0.215 -0.125 0">
+                    <geom class="dyros_pcv_visual" type="mesh" mesh="wheel_body" material="silver" />
+                    <geom class="dyros_pcv_collision" type="cylinder" size="0.05 0.03" group="3" />
+                    <joint name="front_right_steer" type="hinge" axis="0 0 1" range="-1000000 1000000" />
+                    <inertial pos="0 0 0" mass="2.0" diaginertia="0.002 0.002 0.002"/>
+                    
+                    <!-- Front right rotate link and joint -->
+                    <body name="front_right_rotate" pos="-0.02 0 -0.052">
+                        <geom class="dyros_pcv_visual" type="mesh" mesh="wheel_rotate" material="black" />
+                        <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <joint name="front_right_rotate" type="hinge" axis="0 1 0" range="-1000000 1000000" />
+                        <inertial pos="0 0 0" mass="0.72" diaginertia="0.0005685 0.001089 0.0005685"/>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <motor name="front_left_steer"   joint="front_left_steer"   ctrlrange="-50 50"/>
+        <motor name="front_left_rotate"  joint="front_left_rotate"  ctrlrange="-200 200"/>
+        <motor name="front_right_steer"  joint="front_right_steer"  ctrlrange="-50 50"/> 
+        <motor name="front_right_rotate" joint="front_right_rotate" ctrlrange="-200 200"/> 
+        <motor name="rear_left_steer"    joint="rear_left_steer"    ctrlrange="-50 50"/> 
+        <motor name="rear_left_rotate"   joint="rear_left_rotate"   ctrlrange="-200 200"/> 
+        <motor name="rear_right_steer"   joint="rear_right_steer"   ctrlrange="-50 50"/> 
+        <motor name="rear_right_rotate"  joint="rear_right_rotate"  ctrlrange="-200 200"/> 
+    </actuator>
+
+    <sensor> 
+        <framepos name="position_sensor" objtype="site" objname="dyros_pcv_site"/> 
+        <framequat name="orientation_sensor" objtype="site" objname="dyros_pcv_site"/> 
+        <framelinvel name="linear_velocity_sensor" objtype="site" objname="dyros_pcv_site"/> 
+        <frameangvel name="angular_velocity_sensor" objtype="site" objname="dyros_pcv_site"/> 
+    </sensor>
+
+
+</mujoco>
