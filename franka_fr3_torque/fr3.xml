@@ -1,7 +1,7 @@
 <mujoco model="fr3">
   <compiler angle="radian" meshdir="assets"/>
 
-  <option integrator="implicitfast"/>
+  <option timestep="0.001" integrator="implicitfast"/>
 
   <default>
     <default class="fr3">

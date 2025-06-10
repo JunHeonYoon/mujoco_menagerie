@@ -1,7 +1,8 @@
 <mujoco model="summit_xls">
     <compiler angle="radian" meshdir="assets"/>
 
-  <option integrator="implicitfast"/>
+    <!--  For Mecanum wheel, Force motor must be applied -> dt must be 0.001 -->
+    <option timestep="0.001" integrator="implicitfast"/>
 
     <default>
         <default class="summit_xls">
@@ -35,6 +36,7 @@
             <!-- BASE_LINK -->
             <body name="base" pos="0 0 0.127">
                 <inertial pos="0 0 0" quat="1 0 0 0" mass="125.0" diaginertia="1.391 6.853 6.125" />
+                <site name="xls_site"  size = "0.005" rgba = ".1 .1 .9 1" type = "sphere" />
                 <geom type="mesh" rgba="0 0 0 1" mesh="summit_xls_chassis" contype="1" conaffinity="0" group="1"/>
     
                 <!-- CHAPAS INOX TAPAS -->
@@ -377,11 +379,17 @@
     </worldbody>
 
     <actuator>
-        <motor name="front_right_wheel_rolling_joint" joint="front_right_wheel_rolling_joint" ctrlrange="-50 50"/>
-        <motor name="front_left_wheel_rolling_joint"  joint="front_left_wheel_rolling_joint"  ctrlrange="-50 50"/>
-        <motor name="rear_right_wheel_rolling_joint"  joint="rear_right_wheel_rolling_joint"  ctrlrange="-50 50"/>
-        <motor name="rear_left_wheel_rolling_joint"   joint="rear_left_wheel_rolling_joint"   ctrlrange="-50 50"/>
-
+        <motor name="front_right_wheel" joint="front_right_wheel_rolling_joint" ctrlrange="-50 50"/>
+        <motor name="front_left_wheel"  joint="front_left_wheel_rolling_joint"  ctrlrange="-50 50"/>
+        <motor name="rear_right_wheel"  joint="rear_right_wheel_rolling_joint"  ctrlrange="-50 50"/>
+        <motor name="rear_left_wheel"   joint="rear_left_wheel_rolling_joint"   ctrlrange="-50 50"/>
     </actuator>
+
+    <sensor> 
+        <framepos name="position_sensor" objtype="site" objname="xls_site"/> 
+        <framequat name="orientation_sensor" objtype="site" objname="xls_site"/> 
+        <framelinvel name="linear_velocity_sensor" objtype="site" objname="xls_site"/> 
+        <frameangvel name="angular_velocity_sensor" objtype="site" objname="xls_site"/> 
+    </sensor>
 
 </mujoco>

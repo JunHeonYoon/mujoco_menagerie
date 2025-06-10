@@ -1,7 +1,7 @@
 <mujoco model="dyros_pcv">
     <compiler angle="radian" meshdir="assets"/>
 
-    <option integrator="implicitfast"/>
+    <option timestep="0.02" integrator="implicitfast"/>
 
     <default>
         <default class="dyros_pcv">
@@ -56,7 +56,8 @@
                     <!-- Front left rotate link and joint -->
                     <body name="front_left_rotate" pos="-0.02 0 -0.052" >
                         <geom class="dyros_pcv_visual" type="mesh" mesh="wheel_rotate" material="black" />
-                        <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <geom class="dyros_pcv_collision" type="ellipsoid" size="0.055 0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <!-- <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" /> -->
                         <joint name="front_left_rotate" type="hinge" axis="0 1 0" range="-1000000 1000000" />
                         <inertial pos="0 0 0" mass="0.72" diaginertia="0.0005685 0.001089 0.0005685"/>
                     </body>
@@ -72,7 +73,8 @@
                     <!-- Rear left rotate link and joint -->
                     <body name="rear_left_rotate" pos="-0.02 0 -0.052">
                         <geom class="dyros_pcv_visual" type="mesh" mesh="wheel_rotate" material="black" />
-                        <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <geom class="dyros_pcv_collision" type="ellipsoid" size="0.055 0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <!-- <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" /> -->
                         <joint name="rear_left_rotate" type="hinge" axis="0 1 0" range="-1000000 1000000" />
                         <inertial pos="0 0 0" mass="0.72" diaginertia="0.0005685 0.001089 0.0005685"/>
                     </body>
@@ -88,7 +90,8 @@
                     <!-- Rear right rotate link and joint -->
                     <body name="rear_right_rotate" pos="-0.02 0 -0.052">
                         <geom class="dyros_pcv_visual" type="mesh" mesh="wheel_rotate" material="black" />
-                        <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <geom class="dyros_pcv_collision" type="ellipsoid" size="0.055 0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <!-- <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" /> -->
                         <joint name="rear_right_rotate" type="hinge" axis="0 1 0" range="-1000000 1000000" />
                         <inertial pos="0 0 0" mass="0.72" diaginertia="0.0005685 0.001089 0.0005685"/>
                     </body>
@@ -104,7 +107,8 @@
                     <!-- Front right rotate link and joint -->
                     <body name="front_right_rotate" pos="-0.02 0 -0.052">
                         <geom class="dyros_pcv_visual" type="mesh" mesh="wheel_rotate" material="black" />
-                        <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <geom class="dyros_pcv_collision" type="ellipsoid" size="0.055 0.055 0.015" group="3" euler="-1.5708 0 0" />
+                        <!-- <geom class="dyros_pcv_collision" type="cylinder" size="0.055 0.015" group="3" euler="-1.5708 0 0" /> -->
                         <joint name="front_right_rotate" type="hinge" axis="0 1 0" range="-1000000 1000000" />
                         <inertial pos="0 0 0" mass="0.72" diaginertia="0.0005685 0.001089 0.0005685"/>
                     </body>
@@ -114,14 +118,28 @@
     </worldbody>
 
     <actuator>
-        <motor name="front_left_steer"   joint="front_left_steer"   ctrlrange="-50 50"/>
+        <!-- <motor name="front_left_steer"   joint="front_left_steer"   ctrlrange="-50 50"/>
         <motor name="front_left_rotate"  joint="front_left_rotate"  ctrlrange="-200 200"/>
         <motor name="front_right_steer"  joint="front_right_steer"  ctrlrange="-50 50"/> 
         <motor name="front_right_rotate" joint="front_right_rotate" ctrlrange="-200 200"/> 
         <motor name="rear_left_steer"    joint="rear_left_steer"    ctrlrange="-50 50"/> 
         <motor name="rear_left_rotate"   joint="rear_left_rotate"   ctrlrange="-200 200"/> 
         <motor name="rear_right_steer"   joint="rear_right_steer"   ctrlrange="-50 50"/> 
-        <motor name="rear_right_rotate"  joint="rear_right_rotate"  ctrlrange="-200 200"/> 
+        <motor name="rear_right_rotate"  joint="rear_right_rotate"  ctrlrange="-200 200"/>  -->
+
+        <velocity name="front_left_rotate"  joint="front_left_rotate"  kv="100" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>
+        <velocity name="front_right_rotate" joint="front_right_rotate" kv="100" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>
+        <velocity name="rear_left_rotate"   joint="rear_left_rotate"   kv="100" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>
+        <velocity name="rear_right_rotate"  joint="rear_right_rotate"  kv="100" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>
+        <velocity name="front_left_steer"   joint="front_left_steer"   kv="100" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>
+        <velocity name="front_right_steer"  joint="front_right_steer"  kv="100" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>
+        <velocity name="rear_left_steer"    joint="rear_left_steer"    kv="100" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>
+        <velocity name="rear_right_steer"   joint="rear_right_steer"   kv="100" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>
+
+        <!-- <position name="front_left_steer"  joint="front_left_steer"  kp="400" kv="40" forcerange="-87 87" ctrlrange="-3.1415 3.1415"/>
+        <position name="front_right_steer" joint="front_right_steer" kp="400" kv="40" forcerange="-87 87" ctrlrange="-3.1415 3.1415"/>
+        <position name="rear_left_steer"   joint="rear_left_steer"   kp="400" kv="40" forcerange="-87 87" ctrlrange="-3.1415 3.1415"/>
+        <position name="rear_right_steer"  joint="rear_right_steer"  kp="400" kv="40" forcerange="-87 87" ctrlrange="-3.1415 3.1415"/> -->
     </actuator>
 
     <sensor> 
