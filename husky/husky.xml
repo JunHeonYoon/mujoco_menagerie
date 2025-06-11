@@ -1,7 +1,7 @@
 <mujoco model="husky">
     <compiler angle="radian" meshdir="assets"/>
 
-    <option timestep="0.02" integrator="implicitfast"/>
+    <option timestep="0.001" integrator="implicit"/>
 
     <default>
         <default class="husky">
