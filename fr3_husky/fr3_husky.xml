@@ -107,32 +107,37 @@
                     <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467"/>
                     <joint name="front_left_wheel" type="hinge" pos="0 0 0" axis="0 1 0"/>
                     <geom class="visual" pos="0 0 0" quat="0 0 0 1" mesh="wheel" material="husky_black"/>
-                    <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/>
+                    <geom class="collision" size="0.1651 0.1651 0.05715" quat="0.707107 0.707106 0 0" type="ellipsoid"/>
+                    <!-- <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/> -->
                 </body>
 
                 <body name="front_right_wheel" pos="0.256 -0.2854 0.03282">
                     <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467"/>
                     <joint name="front_right_wheel" type="hinge" pos="0 0 0" axis="0 1 0"/>
                     <geom class="visual" pos="0 0 0" quat="0 0 0 1" mesh="wheel" material="husky_black"/>
-                    <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/>
+                    <geom class="collision" size="0.1651 0.1651 0.05715" quat="0.707107 0.707106 0 0" type="ellipsoid"/>
+                    <!-- <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/> -->
                 </body>
 
                 <body name="rear_left_wheel" pos="-0.256 0.2854 0.03282">
                     <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467"/>
                     <joint name="rear_left_wheel" type="hinge" pos="0 0 0" axis="0 1 0"/>
                     <geom class="visual" pos="0 0 0" quat="0 0 0 1" mesh="wheel" material="husky_black"/>
-                    <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/>
+                    <geom class="collision" size="0.1651 0.1651 0.05715" quat="0.707107 0.707106 0 0" type="ellipsoid"/>
+                    <!-- <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/> -->
                 </body>
 
                 <body name="rear_right_wheel" pos="-0.256 -0.2854 0.03282">
                     <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="2.637" diaginertia="0.04411 0.02467 0.02467"/>
                     <joint name="rear_right_wheel" type="hinge" pos="0 0 0" axis="0 1 0" />
                     <geom class="visual" pos="0 0 0" quat="0 0 0 1" mesh="wheel" material="husky_black"/>
-                    <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/>
+                    <geom class="collision" size="0.1651 0.1651 0.05715" quat="0.707107 0.707106 0 0" type="ellipsoid"/>
+                    <!-- <geom class="collision" size="0.1651 0.05715" quat="0.707107 0.707106 0 0" type="cylinder"/> -->
                 </body>
         
                 <!-- FR3 -->
                 <body name="fr3_base" childclass="fr3_husky" pos="0.36 0 0.25">
+
                     <body name="fr3_link0" >
                         <geom mesh="link0_0" material="black" class="visual"/>
                         <geom mesh="link0_1" material="white" class="visual"/>
@@ -244,6 +249,8 @@
         <framequat name="orientation_sensor" objtype="site" objname="husky_site"/> 
         <framelinvel name="linear_velocity_sensor" objtype="site" objname="husky_site"/> 
         <frameangvel name="angular_velocity_sensor" objtype="site" objname="husky_site"/> 
+        <framelinvel name="linear_velocity_sensor_fr3" objtype="site" objname="attachment_site"/> 
+        <frameangvel name="angular_velocity_sensor_fr3" objtype="site" objname="attachment_site"/> 
     </sensor>
 
     <equality>
