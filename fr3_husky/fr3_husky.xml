@@ -137,7 +137,6 @@
         
                 <!-- FR3 -->
                 <body name="fr3_base" childclass="fr3_husky" pos="0.36 0 0.25">
-
                     <body name="fr3_link0" >
                         <geom mesh="link0_0" material="black" class="visual"/>
                         <geom mesh="link0_1" material="white" class="visual"/>
@@ -225,15 +224,8 @@
     </worldbody>
 
     <actuator>
-        <velocity name="left_wheel"  joint="front_left_wheel"  kv="140" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>
-        <velocity name="right_wheel" joint="front_right_wheel" kv="140" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/> 
-        <!-- <velocity name="rear_left_wheel"   joint="rear_left_wheel"   kv="140" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>  -->
-        <!-- <velocity name="rear_right_wheel"  joint="rear_right_wheel"  kv="140" forcerange="-87 87" ctrlrange="-2.8973 2.8973"/>  -->
-
-        <!-- <motor name="front_left_wheel"  joint="front_left_wheel"  ctrlrange="-50 50"/>
-        <motor name="front_right_wheel" joint="front_right_wheel" ctrlrange="-50 50"/> 
-        <motor name="rear_left_wheel"   joint="rear_left_wheel"   ctrlrange="-50 50"/> 
-        <motor name="rear_right_wheel"  joint="rear_right_wheel"  ctrlrange="-50 50"/>  -->
+        <velocity name="left_wheel"  joint="front_left_wheel"  kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973"/>
+        <velocity name="right_wheel" joint="front_right_wheel" kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973"/> 
 
         <motor name="fr3_joint1" joint="fr3_joint1" ctrlrange="-87 87"/>
         <motor name="fr3_joint2" joint="fr3_joint2" ctrlrange="-87 87"/>

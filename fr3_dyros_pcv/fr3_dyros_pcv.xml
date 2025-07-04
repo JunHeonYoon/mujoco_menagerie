@@ -92,8 +92,8 @@
                 <geom class="visual" type="mesh" mesh="body_top" material="black" />
                 <geom class="collision" type="box" pos="0 0 0.12" size="0.320 0.23 0.13" group="3"/>
                 <site name="dyros_pcv_site"  size = "0.005" rgba = ".1 .1 .9 1" type = "sphere" />
-                <inertial pos="0 0 0" mass="10.95" diaginertia="0.2491 0.4255 0.5545"/>
-                <!-- <inertial pos="0 0 0" mass="107.95" diaginertia="5.88 5.88 5.88"/> -->
+                <!-- <inertial pos="0 0 0" mass="10.95" diaginertia="0.2491 0.4255 0.5545"/> -->
+                <inertial pos="0 0 0" mass="107.95" diaginertia="5.88 5.88 5.88"/>
                 
                 <!-- Front left steer link and joint -->
                 <body name="front_left_steer" pos="0.215 0.125 0">

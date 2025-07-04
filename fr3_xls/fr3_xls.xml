@@ -104,7 +104,7 @@
                 <!-- Wheels -->
                 <body name="front_right_wheel_intermediate_link" pos="0.2225 -0.2045 0">
                     <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="6.5" diaginertia="0.0524193 0.0303095 0.0303095" />
-                    <joint name="front_right_wheel_rolling_joint" pos="0 0 0" axis="0 1 0" />
+                    <joint name="front_right_wheel" pos="0 0 0" axis="0 1 0" />
                     <geom size="0.120 0.0435" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.2 0.2 0.2 0.5" contype="1" conaffinity="0" group="3" />
                     <geom type="mesh" mesh="summit_xls_omni_wheel_2" contype="0" conaffinity="0" group="2" rgba="0.2 0.2 0.2 1"/>
                 
@@ -184,7 +184,7 @@
     
                 <body name="front_left_wheel_intermediate_link" pos="0.2225 0.2045 0">
                     <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="6.5" diaginertia="0.0524193 0.0303095 0.0303095" />
-                    <joint name="front_left_wheel_rolling_joint" pos="0 0 0" axis="0 1 0" />
+                    <joint name="front_left_wheel" pos="0 0 0" axis="0 1 0" />
                     <geom size="0.120 0.0435" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.2 0.2 0.2 0.5" contype="1" conaffinity="0" group="3"/>
                     <geom type="mesh" mesh="summit_xls_omni_wheel_1" contype="0" conaffinity="0" group="2" rgba="0.2 0.2 0.2 1"/>
     
@@ -264,7 +264,7 @@
     
                 <body name="rear_right_wheel_intermediate_link" pos="-0.2225 -0.2045 0">
                     <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="6.5" diaginertia="0.0524193 0.0303095 0.0303095" />
-                    <joint name="rear_right_wheel_rolling_joint" pos="0 0 0" axis="0 1 0" />
+                    <joint name="rear_right_wheel" pos="0 0 0" axis="0 1 0" />
                     <geom size="0.120 0.0435" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.2 0.2 0.2 0.5" contype="1" conaffinity="0" group="3"/>
                     <geom type="mesh" mesh="summit_xls_omni_wheel_1" contype="0" conaffinity="0" group="2" rgba="0.2 0.2 0.2 1"/>
     
@@ -344,7 +344,7 @@
     
                 <body name="rear_left_wheel_intermediate_link" pos="-0.2225 0.2045 0">
                     <inertial pos="0 0 0" quat="0.707107 0 0 0.707107" mass="6.5" diaginertia="0.0524193 0.0303095 0.0303095" />
-                    <joint name="rear_left_wheel_rolling_joint" pos="0 0 0" axis="0 1 0" />
+                    <joint name="rear_left_wheel" pos="0 0 0" axis="0 1 0" />
                     <geom size="0.120 0.0435" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.2 0.2 0.2 0.5" contype="1" conaffinity="0" group="3"/>
                     <geom type="mesh" mesh="summit_xls_omni_wheel_2" contype="0" conaffinity="0" group="2" rgba="0.2 0.2 0.2 1"/>
     
@@ -511,15 +511,15 @@
     </worldbody>
 
     <actuator>
-        <!-- <motor name="front_right_wheel" joint="front_right_wheel_rolling_joint" ctrlrange="-50 50"/>
-        <motor name="front_left_wheel"  joint="front_left_wheel_rolling_joint"  ctrlrange="-50 50"/>
-        <motor name="rear_right_wheel"  joint="rear_right_wheel_rolling_joint"  ctrlrange="-50 50"/>
-        <motor name="rear_left_wheel"   joint="rear_left_wheel_rolling_joint"   ctrlrange="-50 50"/> -->
+        <!-- <motor name="front_right_wheel" joint="front_right_wheel" ctrlrange="-50 50"/>
+        <motor name="front_left_wheel"  joint="front_left_wheel"  ctrlrange="-50 50"/>
+        <motor name="rear_right_wheel"  joint="rear_right_wheel"  ctrlrange="-50 50"/>
+        <motor name="rear_left_wheel"   joint="rear_left_wheel"   ctrlrange="-50 50"/> -->
 
-        <velocity name="front_right_wheel" joint="front_right_wheel_rolling_joint" kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
-        <velocity name="front_left_wheel"  joint="front_left_wheel_rolling_joint"  kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
-        <velocity name="rear_right_wheel"  joint="rear_right_wheel_rolling_joint"  kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
-        <velocity name="rear_left_wheel"   joint="rear_left_wheel_rolling_joint"   kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
+        <velocity name="front_right_wheel" joint="front_right_wheel" kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
+        <velocity name="front_left_wheel"  joint="front_left_wheel"  kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
+        <velocity name="rear_right_wheel"  joint="rear_right_wheel"  kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
+        <velocity name="rear_left_wheel"   joint="rear_left_wheel"   kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
 
 
 
