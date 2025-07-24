@@ -255,8 +255,6 @@
         <framequat name="orientation_sensor" objtype="site" objname="husky_site"/> 
         <framelinvel name="linear_velocity_sensor" objtype="site" objname="husky_site"/> 
         <frameangvel name="angular_velocity_sensor" objtype="site" objname="husky_site"/> 
-        <framelinvel name="linear_velocity_sensor_fr3" objtype="site" objname="attachment_site"/> 
-        <frameangvel name="angular_velocity_sensor_fr3" objtype="site" objname="attachment_site"/> 
     </sensor>
 
     <equality>
