@@ -278,7 +278,7 @@
                                                             <geom mesh="hand_c" class="collision" friction="0.001 0.001 0.001"/>
 
                                                             <!-- Hand D435i -->
-                                                            <body name="d435i_rgb_link" pos="0.04 0 0.03" quat="-0.7071068 0 0 0.7071068">
+                                                            <body name="d435_rgb_link" pos="0.04 0 0.03" quat="-0.7071068 0 0 0.7071068">
                                                                 <geom mesh="d435i_0" material="IR_Lens" class="visual"/>
                                                                 <geom mesh="d435i_1" material="IR_Emitter_Lens" class="visual"/>
                                                                 <geom mesh="d435i_2" material="IR_Rim" class="visual"/>
@@ -289,7 +289,7 @@
                                                                 <geom mesh="d435i_7" material="RGB_Pupil" class="visual"/>
                                                                 <geom mesh="d435i_8" mass="0.072" material="Metal_Casing" class="visual"/>
                                                                 <geom class="collision" type="capsule" mesh="d435i_8"/>
-                                                                <camera name="d435_rgb" pos="0 0.015 0" quat="0 0.7071068 0.7071068 0" mode="fixed" resolution="640 480" fovy="58"/>
+                                                                <camera name="d435_rgb" pos="0 0 0" euler="0 3.14 0" mode="fixed" resolution="640 480" fovy="58"/>
                                                                 <body name="d435i_depth_link" pos="-0.032 -0.002 0.004" quat="0.999 -0.051 -0.002 -0.000">
                                                                 </body>
                                                             </body>
