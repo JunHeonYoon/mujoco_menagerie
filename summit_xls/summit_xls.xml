@@ -379,10 +379,10 @@
     </worldbody>
 
     <actuator>
-        <velocity name="front_right_wheel" joint="front_right_wheel" kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
-        <velocity name="front_left_wheel"  joint="front_left_wheel"  kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
-        <velocity name="rear_right_wheel"  joint="rear_right_wheel"  kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
-        <velocity name="rear_left_wheel"   joint="rear_left_wheel"   kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973" />
+        <velocity name="front_right_wheel" joint="front_right_wheel" kv="140" forcerange="-500 500" ctrlrange="-20 20" />
+        <velocity name="front_left_wheel"  joint="front_left_wheel"  kv="140" forcerange="-500 500" ctrlrange="-20 20" />
+        <velocity name="rear_right_wheel"  joint="rear_right_wheel"  kv="140" forcerange="-500 500" ctrlrange="-20 20" />
+        <velocity name="rear_left_wheel"   joint="rear_left_wheel"   kv="140" forcerange="-500 500" ctrlrange="-20 20" />
     </actuator>
 
     <sensor> 

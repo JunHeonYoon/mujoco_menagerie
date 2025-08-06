@@ -335,8 +335,8 @@
     </worldbody>
 
     <actuator>
-        <velocity name="left_wheel"  joint="front_left_wheel"  kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973"/>
-        <velocity name="right_wheel" joint="front_right_wheel" kv="140" forcerange="-500 500" ctrlrange="-20.8973 20.8973"/> 
+        <velocity name="left_wheel"  joint="front_left_wheel"  kv="140" forcerange="-500 500" ctrlrange="-20 20"/>
+        <velocity name="right_wheel" joint="front_right_wheel" kv="140" forcerange="-500 500" ctrlrange="-20 20"/> 
 
         <motor name="fr3_joint1" joint="fr3_joint1" ctrlrange="-87 87"/>
         <motor name="fr3_joint2" joint="fr3_joint2" ctrlrange="-87 87"/>
