@@ -133,6 +133,8 @@
                       <geom mesh="link7_3" material="black" class="visual"/>
                       <geom name="fr3_link7_collision" class="collision" mesh="link7_coll"/>
                       <site name="attachment_site" pos="0 0 0.107"/>
+                      <camera name="hand_eye" pos="0.1 0.0 0.000" euler="3.141592 0.218  0" mode="fixed" fovy="58"/>
+
                     </body>
                   </body>
                 </body>
