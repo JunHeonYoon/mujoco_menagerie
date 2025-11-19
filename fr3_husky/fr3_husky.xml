@@ -5,15 +5,17 @@
 
     <default>
         <default class="fr3_husky">
-            <material specular="0.5" shininess="0.25"/>
+            <material specular="0.5" shininess="0.25"/>S
             <joint armature="0.1" damping="1"/>
             <position inheritrange="1"/>
             <default class="visual">
                 <geom type="mesh" group="2" contype="0" conaffinity="0"/>
             </default>
+            <default class="finger">
+                <joint axis="0 1 0" type="slide" range="0 0.04"/>
+            </default>
             <default class="collision">
                 <geom type="mesh" group="3" mass="0" density="0"/>
-            </default>
             <default class="fingertip_pad_collision_1">
                 <geom type="box" size="0.0085 0.004 0.0085" pos="0 0.0055 0.0445"/>
             </default>
@@ -28,6 +30,7 @@
             </default>
             <default class="fingertip_pad_collision_5">
                 <geom type="box" size="0.003 0.002 0.0035" pos="-0.0055 0.002 0.0395"/>
+            </default>
             </default>
             <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4"/>
         </default>
@@ -50,12 +53,12 @@
         <!-- FR3 -->
         <material name="black" rgba=".2 .2 .2 1"/>
         <material name="white" rgba="1 1 1 1"/>
+        <material name="off_white" rgba="0.901961 0.921569 0.929412 1"/>
         <material name="red" rgba="1 0.072272 0.039546 1"/>
         <material name="gray" rgba="0.863156 0.863156 0.863157 1"/>
         <material name="button_green" rgba="0.102241 0.571125 0.102242 1"/>
         <material name="button_red" rgba="0.520996 0.008023 0.013702 1"/>
         <material name="button_blue" rgba="0.024157 0.445201 0.737911 1"/>
-        <material name="off_white" rgba="0.901961 0.921569 0.929412 1"/>
 
         <mesh file="fr3/link0_0.obj"/>
         <mesh file="fr3/link0_1.obj"/>
@@ -292,7 +295,7 @@
                                                             <body name="hand_tcp" pos="0 0 0.1034" quat="0 0 0 1" />
                                                             <body name="left_finger" pos="0 0 0.0584">
                                                                 <inertial mass="0.015" pos="0 0 0" diaginertia="2.375e-6 2.375e-6 7.5e-7"/>
-                                                                <!-- <joint name="finger_joint1" class="finger"/> -->
+                                                                <joint name="finger_joint1" class="finger"/>
                                                                 <geom mesh="finger_0" material="off_white" class="visual"/>
                                                                 <geom mesh="finger_1" material="black" class="visual"/>
                                                                 <geom mesh="finger_0" class="collision"/>
@@ -304,7 +307,7 @@
                                                             </body>
                                                             <body name="right_finger" pos="0 0 0.0584" quat="0 0 0 1">
                                                                 <inertial mass="0.015" pos="0 0 0" diaginertia="2.375e-6 2.375e-6 7.5e-7"/>
-                                                                <!-- <joint name="finger_joint2" class="finger"/> -->
+                                                                <joint name="finger_joint2" class="finger"/>
                                                                 <geom mesh="finger_0" material="off_white" class="visual"/>
                                                                 <geom mesh="finger_1" material="black" class="visual"/>
                                                                 <geom mesh="finger_0" class="collision"/>
@@ -330,6 +333,13 @@
         </body>
     </worldbody>
 
+    <tendon>
+        <fixed name="finger">
+            <joint joint="finger_joint1" coef="0.5"/>
+            <joint joint="finger_joint2" coef="0.5"/>
+        </fixed>
+    </tendon>
+
     <actuator>
         <velocity name="left_wheel"  joint="front_left_wheel"  kv="140" forcerange="-500 500" ctrlrange="-20 20"/>
         <velocity name="right_wheel" joint="front_right_wheel" kv="140" forcerange="-500 500" ctrlrange="-20 20"/> 
@@ -341,6 +351,7 @@
         <motor name="fr3_joint5" joint="fr3_joint5" ctrlrange="-12 12"/>
         <motor name="fr3_joint6" joint="fr3_joint6" ctrlrange="-12 12"/>
         <motor name="fr3_joint7" joint="fr3_joint7" ctrlrange="-12 12"/>
+        <general class="fr3_husky" name="fr3_hand" tendon="finger" forcerange="-100 100" ctrlrange="0 255" gainprm="0.01568627451 0 0" biasprm="0 -100 -10"/>
     </actuator>
 
     <sensor> 
@@ -351,15 +362,10 @@
     </sensor>
 
     <equality>
-        <joint name="left_wheels_gear"
-            joint1="front_left_wheel"
-            joint2="rear_left_wheel"
-            polycoef="0 1 0 0 0"/>
+        <joint name="left_wheels_gear"  joint1="front_left_wheel"  joint2="rear_left_wheel"  polycoef="0 1 0 0 0"/>
+        <joint name="right_wheels_gear" joint1="front_right_wheel" joint2="rear_right_wheel" polycoef="0 1 0 0 0"/>
 
-        <joint name="right_wheels_gear"
-            joint1="front_right_wheel"
-            joint2="rear_right_wheel"
-            polycoef="0 1 0 0 0"/>
+        <joint joint1="finger_joint1" joint2="finger_joint2" solimp="0.95 0.99 0.001" solref="0.005 1"/> 
     </equality>
 
 </mujoco>
