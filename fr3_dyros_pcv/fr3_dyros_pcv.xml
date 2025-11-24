@@ -4,7 +4,7 @@
     <option timestep="0.001" integrator="implicit"/>
 
     <default>
-        <default class="fr3_husky">
+        <default class="fr3_dyros_pcv">
             <material specular="0.5" shininess="0.25"/>S
             <joint armature="0.1" damping="1"/>
             <position inheritrange="1"/>
@@ -136,8 +136,8 @@
                 <geom class="visual" type="mesh" mesh="body_top" material="black" />
                 <geom class="collision" type="box" pos="0 0 0.12" size="0.320 0.23 0.13" group="3"/>
                 <site name="dyros_pcv_site"  size = "0.005" rgba = ".1 .1 .9 1" type = "sphere" />
-                <!-- <inertial pos="0 0 0" mass="10.95" diaginertia="0.2491 0.4255 0.5545"/> -->
-                <inertial pos="0 0 0" mass="107.95" diaginertia="5.88 5.88 5.88"/>
+                <inertial pos="0 0 0" mass="10.95" diaginertia="0.2491 0.4255 0.5545"/>
+                <!-- <inertial pos="0 0 0" mass="107.95" diaginertia="5.88 5.88 5.88"/> -->
                 
                 <!-- Front left steer link and joint -->
                 <body name="front_left_steer" pos="0.215 0.125 0">
@@ -295,6 +295,7 @@
 
                                                             <!-- Hand D435i -->
                                                             <body name="d435_rgb_link" pos="0.04 0 0.03" quat="-0.7071068 0 0 0.7071068">
+                                                                <inertial mass="0.0" pos="0 0 0" diaginertia="0 0 0"/>
                                                                 <geom mesh="d435i_0" material="IR_Lens" class="visual"/>
                                                                 <geom mesh="d435i_1" material="IR_Emitter_Lens" class="visual"/>
                                                                 <geom mesh="d435i_2" material="IR_Rim" class="visual"/>
@@ -374,7 +375,7 @@
         <motor name="fr3_joint5" joint="fr3_joint5" ctrlrange="-12 12"/>
         <motor name="fr3_joint6" joint="fr3_joint6" ctrlrange="-12 12"/>
         <motor name="fr3_joint7" joint="fr3_joint7" ctrlrange="-12 12"/>
-        <general class="fr3_pcv" name="fr3_hand" tendon="finger" forcerange="-100 100" ctrlrange="0 255" gainprm="0.01568627451 0 0" biasprm="0 -100 -10"/>
+        <general class="fr3_dyros_pcv" name="fr3_hand" tendon="finger" forcerange="-100 100" ctrlrange="0 255" gainprm="0.01568627451 0 0" biasprm="0 -100 -10"/>
     </actuator>
 
     <sensor> 
