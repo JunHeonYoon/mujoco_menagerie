@@ -3,6 +3,10 @@
 > [!IMPORTANT]
 > Requires MuJoCo 3.1.3 or later.
 
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md) for a full history of changes.
+
 ## Overview
 
 This package contains a simplified robot description (MJCF) of the (left and right) [LEAP Hand](https://leaphand.com/) developed by Carnegie Mellon University. It is derived from the [publicly available URDF description](https://github.com/dexsuite/dex-urdf/tree/main/robots/hands/leap_hand).
@@ -66,6 +70,10 @@ This package contains a simplified robot description (MJCF) of the (left and rig
 The steps for creating the left hand are mostly the same, except for the following:
 - we use the `dexsuite` hash `6eeda17435d46dde5915a16fd37b248bd8bb468e`, because there are edits for making the left handed LEAP URDF more consistent with the right
 - there was no correction of the "thumb_mp_collision" field, but the associated visual mesh is different (thumb_mp_left.obj)
+
+### Both Hands
+- Added `white` material for fingertips
+- Applied `black` material to collision meshes for improved hand appearance
 
 ## License
 
