@@ -116,8 +116,11 @@
 
     <worldbody>
         <body name="base" childclass="dual_fr3">
+            <geom class="visual" size="0.15 0.45 0.5" quat="1 0 0 0" type="box" />
+            <geom class="collision" size="0.15 0.45 0.5" quat="1 0 0 0" type="box" />
+
             <!-- LEFT_FR3 -->
-            <body name="fr3_l_arm_base" childclass="dual_fr3" pos="0.345 0.215 0.26" quat="0.965928 0 0 0.258819">
+            <body name="fr3_l_arm_base" childclass="dual_fr3" pos="0 0.3 0.5" quat="1 0 0 0">
                 <body name="fr3_l_link0" >
                     <geom mesh="link0_0" material="black" class="visual"/>
                     <geom mesh="link0_1" material="white" class="visual"/>
@@ -255,7 +258,7 @@
             </body>
 
             <!-- RIGHT_FR3 -->
-            <body name="fr3_r_arm_base" childclass="dual_fr3" pos="0.345 -0.215 0.26" quat="0.965928 0 0 -0.258819">
+            <body name="fr3_r_arm_base" childclass="dual_fr3" pos="0 -0.3 0.5" quat="1 0 0 0">
                 <body name="fr3_r_link0" >
                     <geom mesh="link0_0" material="black" class="visual"/>
                     <geom mesh="link0_1" material="white" class="visual"/>
